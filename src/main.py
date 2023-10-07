@@ -68,7 +68,17 @@ def validate_backup_strategy(
 def main(
     verbose: bool, source: str, destination: str, backup_strategy: BackupStrategy
 ) -> None:
-    """Backup CLI."""
+    """
+    Backup CLI.
+
+    Perform a backup operation using the specified strategy.
+
+    Args:
+        verbose (bool): Enable verbose output.
+        source (str): Source directory to be backed up.
+        destination (str): Destination directory to store the backup.
+        backup_strategy (BackupStrategy): Backup strategy to use.
+    """
     logger = ColoredLogger(name="main", verbose=verbose)
     logger.log(LogLevel.INFO, "Starting backup.")
 
