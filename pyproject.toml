@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "backup-cli"
+version = "0.1.0"
+description = ""
+authors = ["Alexander Alarcon <walarcon14@gmail.com>"]
+readme = "README.md"
+packages = [{ include = "src" }]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+colorama = "^0.4.6"
+tqdm = "^4.66.1"
+click = "^8.1.7"
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.9.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+cli = "src.main:main"
+seed = "src.seed:main"

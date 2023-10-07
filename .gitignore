@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Poetry
+__pypackages__/
+poetry.lock
+
+# Virtual Environment
+venv/
+.env/
+
+# Editor/IDE specific files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Dependency management
+vendor/
+
+# Jupyter Notebook specific files
+.ipynb_checkpoints/
+
+# Test results
+pytest_cache/
+htmlcov/
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+
+# Log files
+*.log
+
+dummy_tree*/
