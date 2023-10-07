@@ -74,6 +74,12 @@ class IncrementalBackup(Backup):
         if source_file.is_symlink():
             link_target: str = os.readlink(source_file)
             try:
+                # Check if the destination symlink already exists and points to a different target
+                if (
+                    destination_file_path.exists()
+                    and os.readlink(destination_file_path) != link_target
+                ):
+                    os.remove(destination_file_path)  # Remove the existing symlink
                 os.symlink(link_target, destination_file_path)
                 self.logger.log(
                     LogLevel.COPY,
