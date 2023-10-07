@@ -1,3 +1,5 @@
+from typing import Optional
+
 import click
 
 from .backup.backup import Backup
@@ -70,8 +72,13 @@ def main(
     logger = ColoredLogger(name="main", verbose=verbose)
     logger.log(LogLevel.INFO, "Starting backup.")
 
-    backup = Backup(
-        source_directory=source, destination_directory=destination, logger=logger
+    backup: Backup = BackupFactory.create_backup(
+        backup_strategy=backup_strategy,
+        backup_args=BackupArgs(
+            source_directory=source,
+            destination_directory=destination,
+            logger=logger,
+        ),
     )
     backup.perform_backup()
 
