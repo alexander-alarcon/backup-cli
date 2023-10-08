@@ -22,6 +22,7 @@ class LogLevel(IntEnum):
     CRITICAL = auto()
     SKIP = auto()
     COPY = auto()
+    DELETE = auto()
     CUSTOM_LEVEL = auto()
 
 
@@ -45,6 +46,7 @@ class ColoredLogger:
         LogLevel.CRITICAL: f"{Fore.RED}{Style.BRIGHT}",
         LogLevel.SKIP: Fore.YELLOW,
         LogLevel.COPY: Fore.CYAN,
+        LogLevel.DELETE: Fore.MAGENTA,
     }
 
     def __init__(self, name: str, verbose: bool = False) -> None:
@@ -88,6 +90,7 @@ class ColoredLogger:
             LogLevel.CRITICAL: "CRITICAL",
             LogLevel.SKIP: "SKIP",
             LogLevel.COPY: "COPY",
+            LogLevel.DELETE: "DELETE",
         }
 
         def __init__(self, fmt: str) -> None:
