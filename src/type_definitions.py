@@ -7,10 +7,11 @@ from .logger import ColoredLogger
 class BackupStrategy(StrEnum):
     """
     Enum representing backup strategies.
-    Currently, only supports 'incremental'.
+    Currently, supports 'incremental' and 'full'.
     """
 
     INCREMENTAL = "incremental"
+    FULL = "full"
 
 
 class BackupArgs(NamedTuple):
