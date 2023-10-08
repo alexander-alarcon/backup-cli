@@ -60,7 +60,11 @@ def validate_backup_strategy(
         [strategy.value for strategy in BackupStrategy], case_sensitive=False
     ),
     callback=validate_backup_strategy,
-    help="Choose a backup strategy: incremental, etc.",
+    help="""Choose a backup strategy. Available options:
+    - 'incremental': Incremental backup (default), only copies new or modified files\n.
+    - 'full': Full backup, replicates the source directory, overwriting existing files.
+    - 'mirror': Mirror backup, keeps the destination directory in sync with the source, overwriting existing files. Warning: This strategy may result in data loss if files have been deleted or renamed in the source directory.
+    """,
     show_default=True,
     show_choices=True,
     default=BackupStrategy.INCREMENTAL.value,
@@ -73,11 +77,9 @@ def main(
 
     Perform a backup operation using the specified strategy.
 
-    Args:
-        verbose (bool): Enable verbose output.
-        source (str): Source directory to be backed up.
-        destination (str): Destination directory to store the backup.
-        backup_strategy (BackupStrategy): Backup strategy to use.
+    The backup strategy determines how files are copied and updated in the destination directory.
+    Use the 'incremental' strategy to copy only new or modified files, 'full' to replicate the source
+    directory entirely, or 'mirror' to keep the destination directory in sync with the source.
     """
     logger = ColoredLogger(name="main", verbose=verbose)
     logger.log(LogLevel.INFO, "Starting backup.")
